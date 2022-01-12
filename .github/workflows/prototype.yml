@@ -36,10 +36,12 @@ jobs:
       run:
         working-directory: ./packages/${{ matrix.package_name }}
 
-    - uses: actions/checkout@v2
+    
 
     steps:
-    - run: 
+    
+    - uses: actions/checkout@v2
+
     - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
     - run: echo "_flutter/bin" >> $GITHUB_PATH
 
