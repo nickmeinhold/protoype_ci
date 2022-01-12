@@ -30,6 +30,11 @@ jobs:
             project_type: dart
           - package_name: ws_game_server_types
             project_type: dart
+    
+    # set the package directory as the CWD
+    defaults:
+      run:
+        working-directory: ./packages/${{ matrix.package_name }}
 
     steps:
     - name: "Install Flutter"
