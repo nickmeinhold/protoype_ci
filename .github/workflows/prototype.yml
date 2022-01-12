@@ -39,6 +39,7 @@ jobs:
     steps:
     - name: "Install Flutter"
       run: |
+      echo "$HOME"
         cd $HOME
         git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
         echo "$HOME/_flutter/bin" >> $GITHUB_PATH
