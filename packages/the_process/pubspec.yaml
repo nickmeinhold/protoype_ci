@@ -1,0 +1,46 @@
+name: the_process
+description: A tool to automate "the process", a system for organising collaboration.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+  flutter: ">=2.8.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # redfire 
+  redfire:
+    path: ../redfire
+  freezed_annotation: any
+  json_annotation: ^4.4.0
+  redux: any
+  flutter_redux: any
+  fast_immutable_collections: any
+
+  # utils 
+  uuid: any
+  http: any
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  test: any
+  mockito: any
+  redfire_lints:
+    path: ../redfire_lints
+  redfire_test:
+    path: ../redfire_test
+  
+  build_runner: any
+  freezed: any
+  json_serializable: any
+
+flutter:
+  uses-material-design: true
