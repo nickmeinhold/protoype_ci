@@ -36,9 +36,12 @@ jobs:
       run:
         working-directory: ./packages/${{ matrix.package_name }}
 
+    - uses: actions/checkout@v2
+
     steps:
-    - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable /tmp/_flutter
-    - run: echo "/tmp/_flutter/bin" >> $GITHUB_PATH
+    - run: 
+    - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
+    - run: echo "_flutter/bin" >> $GITHUB_PATH
 
     # - name: "Install Flutter"
     #   run: |
@@ -47,7 +50,7 @@ jobs:
     #     echo "$HOME/_flutter/bin" >> $GITHUB_PATH
     #     cd $GITHUB_WORKSPACE
     
-    - uses: actions/checkout@v2
+    
 
     - run: flutter pub get
     - name: Run build_runner if required
