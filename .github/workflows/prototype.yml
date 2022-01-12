@@ -46,8 +46,9 @@ jobs:
     - run: echo "_flutter/bin" >> $GITHUB_PATH
 
     # Install lcov 
-    # check here for new versions: http://ltp.sourceforge.net/coverage/lcov.php
-    - run: wget https://github.com/linux-test-project/lcov/releases/download/v1.14/lcov-1.14.tar.gz  -O - | sudo tar -xz -C _lcov
+    # 
+    - run: mkdir _lcov
+    - run: wget https://github.com/linux-test-project/lcov/releases/download/v1.14/lcov-1.14.tar.gz  -O - | sudo tar -xz -C _lcov/
     - run: cd _lcov && sudo make install
 
 
