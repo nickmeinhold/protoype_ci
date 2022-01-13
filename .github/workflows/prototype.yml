@@ -62,7 +62,7 @@ jobs:
         with:
           path: ./coverage
     
-      - run: cd apps/flutter/draw_badge && flutter test test/badge_widget_test.dart
+      - run: cd /apps/flutter/draw_badge && flutter test test/badge_widget_test.dart
       - run: /deploy_coverage -k '${{secrets.FIREBASE_SERVICE_ACCOUNT}}' -p enspyrco-monorepo
 
 # name: Coverage
