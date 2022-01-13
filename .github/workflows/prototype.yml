@@ -8,48 +8,49 @@ on:
 jobs:
   generate_coverage:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - package_name: adventure_maker
-            run_code_gen: yes
-            project_type: flutter
-          - package_name: flireator
-            project_type: flutter
-          - package_name: redfire
-            project_type: flutter
-          - package_name: redfire_test
-            project_type: flutter
-          - package_name: tech_world
-            run_code_gen: yes
-            project_type: flutter
-          - package_name: the_process
-            run_code_gen: yes
-            project_type: flutter
-          - package_name: ws_game_server
-            project_type: dart
-          - package_name: ws_game_server_types
-            project_type: dart
+    # strategy:
+    #   matrix:
+    #     include:
+    #       - package_name: adventure_maker
+    #         run_code_gen: yes
+    #         project_type: flutter
+    #       - package_name: flireator
+    #         project_type: flutter
+    #       - package_name: redfire
+    #         project_type: flutter
+    #       - package_name: redfire_test
+    #         project_type: flutter
+    #       - package_name: tech_world
+    #         run_code_gen: yes
+    #         project_type: flutter
+    #       - package_name: the_process
+    #         run_code_gen: yes
+    #         project_type: flutter
+    #       - package_name: ws_game_server
+    #         project_type: dart
+    #       - package_name: ws_game_server_types
+    #         project_type: dart
     
-    container: enspyrco/ci-tools:beta
-    # set the package directory as the CWD
-    defaults:
-      run:
-        working-directory: ./packages/${{ matrix.package_name }}
+    # container: enspyrco/ci-tools:beta
+    # # set the package directory as the CWD
+    # defaults:
+    #   run:
+    #     working-directory: ./packages/${{ matrix.package_name }}
 
     steps:
     - uses: actions/checkout@v2  
 
-    - run: flutter pub get
-    - name: Run build_runner if required
-      if: ${{ matrix.run_code_gen }}
-      run: flutter pub run build_runner build
-    - run: flutter test --coverage && genhtml coverage/lcov.info -o coverage
+    # - run: flutter pub get
+    # - name: Run build_runner if required
+    #   if: ${{ matrix.run_code_gen }}
+    #   run: flutter pub run build_runner build
+    # - run: flutter test --coverage && genhtml coverage/lcov.info -o coverage
       
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.package_name }}
-        path: ./packages/${{ matrix.package_name }}/coverage/
+        path: ./test/data/coverage/${{ matrix.package_name }}
+        # path: ./packages/${{ matrix.package_name }}/coverage/
 
   upload_coverage:
     runs-on: ubuntu-latest
